@@ -5,12 +5,13 @@ using UnityEngine;
 [RequireComponent (typeof(Rigidbody))]
 public class GravityBody : MonoBehaviour
 {
-	public GravityAttractor attractor;
+	public GameObject attractor;
 	private Transform myTransform;
 
 	void Start(){
 
 		myTransform = this.GetComponent<Transform>();
+		attractor =  GameObject.Find("Ground");
 
 		GetComponent<Rigidbody>().useGravity = false;
 		GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
@@ -25,7 +26,7 @@ public class GravityBody : MonoBehaviour
 
 		if(attractor)
 		{
-			attractor.Attract(myTransform);
+			attractor.GetComponent<GravityAttractor>().Attract(myTransform);
 		}
 	}
 }

@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        
+        ground = GameObject.Find("Ground");
+
     }
 
     // Update is called once per frame

@@ -6,6 +6,8 @@ public class Ground : MonoBehaviour
 {
     public float shrinkSpeed = 1;
     public float radius = 100;
+    private bool isStart = false;
+    
 
     [SerializeField] private GameObject enemy = null;
     private float resetTime = 0f; 
@@ -19,13 +21,18 @@ public class Ground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        resetTime += Time.deltaTime;
-        radius -= Time.deltaTime*shrinkSpeed;
-        transform.localScale = new Vector3(radius,radius,radius);
-        if(resetTime-.5f>0)
+        if(isStart)
         {
-            InstantiateEnemy();
-            resetTime = 0f;
+            resetTime += Time.deltaTime;
+            radius -= Time.deltaTime*shrinkSpeed;
+            transform.localScale = new Vector3(radius,radius,radius);
+        
+           if(resetTime-1.0f>0)
+            {
+                InstantiateEnemy();
+                resetTime = 0f;
+            }
+
         }
     
     }
@@ -34,5 +41,15 @@ public class Ground : MonoBehaviour
     {
         Vector3 spawnPos = Random.onUnitSphere *(radius+30);
         GameObject spawnEnemy = Instantiate(enemy,spawnPos,Quaternion.identity) as GameObject;
+    }
+
+    public void startMeteorites()
+    {
+        isStart = true;
+    }
+
+    public void endMeteorites()
+    {
+        isStart = false;
     }
 }
