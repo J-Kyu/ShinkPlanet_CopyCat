@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-	public float moveSpeed;
-	private Vector3 moveDirection;
-	[SerializeField] private State curMode = null; 
+   public float moveSpeed;
 
+	private Vector3 moveDirection;
+	private bool isStart = false;
 	[SerializeField] private Text endGame = null;
 
 	void Start()
@@ -39,5 +39,16 @@ public class PlayerController : MonoBehaviour
            endMovement();
 		   endGame.enabled = true;
         }
+    }
+
+
+      public void startMovement()
+    {
+        isStart = true;
+    }
+
+    public void endMovement()
+    {
+        isStart = false;
     }
 }

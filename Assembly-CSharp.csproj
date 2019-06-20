@@ -61,7 +61,6 @@
      <Compile Include="Assets\Scripts\GravityBody.cs" />
      <Compile Include="Assets\Scripts\Ground.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\State.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/User/Documents/ShinkPlanet_CopyCat/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
