@@ -7,6 +7,7 @@ public class State : MonoBehaviour
     public enum Mode {Wait,Playing,Pause,EndGame};
     public Mode curState = Mode.Wait;
     
+    [SerializeField] private Ground ground = null;
     [SerializeField] private GameObject endGameGO = null;
     [SerializeField] private GameObject waitGO = null;
 
@@ -17,6 +18,7 @@ public class State : MonoBehaviour
 
     public void ModeToWait()
     {
+        ground.resetRadius();
         curState = Mode.Wait;
         waitGO.SetActive(true);
         endGameGO.SetActive(false);

@@ -14,7 +14,9 @@ public class GravityBody : MonoBehaviour
 		attractor =  GameObject.Find("Ground");
 
 		GetComponent<Rigidbody>().useGravity = false;
-		GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+		// GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+		// GetComponent<Rigidbody>().constraints.x = false;
+		// GetComponent<Rigidbody>().constraints.z = false;
 
 	}
 	void FixedUpdate()

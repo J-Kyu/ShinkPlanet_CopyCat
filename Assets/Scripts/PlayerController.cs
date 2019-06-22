@@ -5,13 +5,27 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-	public float moveSpeed;
+	public float moveSpeed = 10;
+	public float rotateSpeed = 30;
 	private Vector3 moveDirection;
+	private Vector3 rotationDirection;
 	[SerializeField] private State state = null;
+	
+
 
 	void Update()
 	{
-		moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized;
+		moveDirection = new Vector3(0,0,Input.GetAxisRaw("Vertical")).normalized;
+		if(Input.GetAxisRaw("Horizontal") != 0)
+		{
+            transform.Rotate(new Vector3(0,(Input.GetAxisRaw("Horizontal") ),0)*rotateSpeed*Time.deltaTime);
+		}
+		else
+		{
+			Debug.Log("Debug roation "+ transform.rotation);
+		}
+
+
 	}
 
 	void FixedUpdate()

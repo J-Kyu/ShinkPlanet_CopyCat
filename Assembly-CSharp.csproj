@@ -57,11 +57,13 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BlackAsh.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\FakeMovement.cs" />
      <Compile Include="Assets\Scripts\GravityAttractor.cs" />
      <Compile Include="Assets\Scripts\GravityBody.cs" />
      <Compile Include="Assets\Scripts\Ground.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\State.cs" />
+     <Compile Include="Assets\Scripts\TextDistance.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/User/Documents/ShinkPlanet_CopyCat/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

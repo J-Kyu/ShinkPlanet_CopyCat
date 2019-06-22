@@ -36,6 +36,12 @@ public class Ground : MonoBehaviour
     
     }
 
+    public void resetRadius()
+    {
+        radius = 100;
+        transform.localScale = new Vector3(radius,radius,radius);
+    }
+
     void InstantiateEnemy()
     {
         Vector3 spawnPos = Random.onUnitSphere *(radius+30);
