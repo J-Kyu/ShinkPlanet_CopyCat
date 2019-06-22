@@ -9,7 +9,10 @@ public class Ground : MonoBehaviour
 
     [SerializeField] private State state = null;
     [SerializeField] private GameObject enemy = null;
-    private float resetTime = 0f; 
+    [SerializeField] private GameObject key = null;
+    [SerializeField] private GameObject fuel = null;
+    private float resetTime_e = 0f; 
+    private float resetTime_i = 0f; 
 
     // Start is called before the first frame update
     void Start()
@@ -22,15 +25,25 @@ public class Ground : MonoBehaviour
     {
         if(state.curState == State.Mode.Playing)
         {
-            resetTime += Time.deltaTime;
+            resetTime_e += Time.deltaTime;
+            resetTime_i += Time.deltaTime;
             radius -= Time.deltaTime*shrinkSpeed;
             transform.localScale = new Vector3(radius,radius,radius);
         
-           if(resetTime-0.3f>0)
+            //enemy
+           if(resetTime_e-0.3f>0)
             {
                 InstantiateEnemy();
-                resetTime = 0f;
+                resetTime_e = 0f;
             }
+
+            //key and monkey
+            if(resetTime_i-3f>0)
+            {
+                InstantiateItem();
+                resetTime_i = 0f;
+            }
+
 
         }
     
@@ -46,5 +59,16 @@ public class Ground : MonoBehaviour
     {
         Vector3 spawnPos = Random.onUnitSphere *(radius+30);
         GameObject spawnEnemy = Instantiate(enemy,spawnPos,Quaternion.identity) as GameObject;
+    }
+
+    void InstantiateItem()
+    {
+        Vector3 spawnPos_k = Random.onUnitSphere *(radius);
+        Vector3 spawnPos_m = Random.onUnitSphere *(radius);
+
+
+
+        GameObject spawnItem_m = Instantiate(key,spawnPos_k,Quaternion.identity) as GameObject;
+        GameObject spawnItem_k = Instantiate(fuel,spawnPos_m,Quaternion.identity) as GameObject;
     }
 }
