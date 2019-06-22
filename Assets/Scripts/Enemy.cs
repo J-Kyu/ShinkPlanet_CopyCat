@@ -24,16 +24,22 @@ public class Enemy : MonoBehaviour
     {
         if(col.gameObject.tag == "Ground")
         {
-           GameObject afterEffect = Instantiate(blackAsh,this.transform.position,Quaternion.identity) as GameObject;
+            StartCoroutine(wait());
+        }
+    }
 
-            Vector3 gravityUp = (afterEffect.transform.position - ground.transform.position).normalized;
-		    Vector3 localUp = afterEffect.transform.up;
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(2);
+         GameObject afterEffect =   Instantiate(blackAsh,this.transform.position,Quaternion.identity) as GameObject;
+
+        Vector3 gravityUp = (afterEffect.transform.position - ground.transform.position).normalized;
+        Vector3 localUp = afterEffect.transform.up;
 
           //adjusting rotation
-		    Quaternion targetRotation = Quaternion.FromToRotation(localUp,gravityUp) * afterEffect.transform.rotation;
-		    afterEffect.transform.rotation = targetRotation;
-
-            Destroy(this.gameObject);
-        }
+        Quaternion targetRotation = Quaternion.FromToRotation(localUp,gravityUp) * afterEffect.transform.rotation;
+        afterEffect.transform.rotation = targetRotation;
+        Destroy(this.gameObject);
+        
     }
 }

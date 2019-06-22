@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlackAsh : MonoBehaviour
 {
-    public float resetTime = 1.0f;
+    public float resetTime = 2.0f;
  
     // Update is called once per frame
     void Update()

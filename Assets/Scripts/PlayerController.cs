@@ -20,12 +20,6 @@ public class PlayerController : MonoBehaviour
 		{
             transform.Rotate(new Vector3(0,(Input.GetAxisRaw("Horizontal") ),0)*rotateSpeed*Time.deltaTime);
 		}
-		else
-		{
-			Debug.Log("Debug roation "+ transform.rotation);
-		}
-
-
 	}
 
 	void FixedUpdate()
@@ -46,5 +40,13 @@ public class PlayerController : MonoBehaviour
         {
 		  state.ModeToEndGame();
         }
+		else if(col.gameObject.tag == "Fuel")
+		{
+			moveSpeed +=5;
+		}
+		else if(col.gameObject.tag == "Key")
+		{
+			transform.localScale = transform.localScale *0.8f;
+		}
     }
 }
