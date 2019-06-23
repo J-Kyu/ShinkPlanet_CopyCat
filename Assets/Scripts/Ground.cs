@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
     public float shrinkSpeed = 1;
-    public float radius = 100;
+    private float radius = 100;
 
     [SerializeField] private State state = null;
     [SerializeField] private GameObject enemy = null;
@@ -70,5 +70,10 @@ public class Ground : MonoBehaviour
 
         GameObject spawnItem_m = Instantiate(key,spawnPos_k,Quaternion.identity) as GameObject;
         GameObject spawnItem_k = Instantiate(fuel,spawnPos_m,Quaternion.identity) as GameObject;
+    }
+
+    public float GetRadius()
+    {
+        return radius;
     }
 }

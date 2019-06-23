@@ -10,7 +10,7 @@ public class TextDistance : MonoBehaviour
 
     void Update() 
     {
-        string distanceString = string.Format("Distance: {0:F2}",ground.radius);
+        string distanceString = string.Format("Distance: {0:F2}",ground.GetRadius());
         distanceText.text = distanceString;
     }
 }

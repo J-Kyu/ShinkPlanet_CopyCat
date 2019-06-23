@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-	public float moveSpeed = 10;
-	public float rotateSpeed = 30;
+	private float moveSpeed = 40;
+	private float rotateSpeed = 60;
 	private Vector3 moveDirection;
 	private Vector3 rotationDirection;
 	[SerializeField] private State state = null;
@@ -49,4 +49,10 @@ public class PlayerController : MonoBehaviour
 			transform.localScale = transform.localScale *0.8f;
 		}
     }
+
+	public void resetPlayer(float defaultSpeed, float defaultScale)
+	{
+		moveSpeed = defaultSpeed;
+		transform.localScale = new Vector3 (defaultScale,defaultScale,defaultScale);	
+	}
 }
