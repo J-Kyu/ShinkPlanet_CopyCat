@@ -6,11 +6,14 @@ public class Ground : MonoBehaviour
 {
     public float shrinkSpeed = 1;
     private float radius = 100;
+    private float _radiusOffset = 100;
 
     [SerializeField] private State state = null;
     [SerializeField] private GameObject enemy = null;
-    [SerializeField] private GameObject key = null;
+    [SerializeField] private GameObject monkey = null;
     [SerializeField] private GameObject fuel = null;
+    [SerializeField] private Transform itemParent = null;
+    [SerializeField] private Transform enemyParent = null;
     private float resetTime_e = 0f; 
     private float resetTime_i = 0f; 
 
@@ -23,42 +26,46 @@ public class Ground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(state.curState == State.Mode.Playing)
-        {
-            resetTime_e += Time.deltaTime;
-            resetTime_i += Time.deltaTime;
-            radius -= Time.deltaTime*shrinkSpeed;
-            transform.localScale = new Vector3(radius,radius,radius);
-        
-            //enemy
-           if(resetTime_e-0.3f>0)
-            {
-                InstantiateEnemy();
-                resetTime_e = 0f;
-            }
+        switch(state.curState){
 
-            //key and monkey
-            if(resetTime_i-3f>0)
-            {
-                InstantiateItem();
-                resetTime_i = 0f;
-            }
+            case State.Mode.Playing:{
+                resetTime_e += Time.deltaTime;
+                resetTime_i += Time.deltaTime;
+                radius -= Time.deltaTime*shrinkSpeed;
+                transform.localScale = new Vector3(radius,radius,radius);
+            
+                //enemy
+                if(resetTime_e-0.3f>0){
+                    InstantiateEnemy();
+                    resetTime_e = 0f;
+                }
 
+                //monkey and monmonkey
+                if(resetTime_i-5f>0)
+                {
+                    InstantiateItem();
+                    InstantiateItem();
+                    resetTime_i = 0f;
+                }
+
+                break;
+            }
+            case State.Mode.Wait:{
+                radius = _radiusOffset;
+                transform.localScale = Vector3.Slerp(transform.localScale,new Vector3 (_radiusOffset,_radiusOffset,_radiusOffset),Time.deltaTime);
+
+                break;
+            }
+            default: break;
 
         }
     
     }
 
-    public void resetRadius()
-    {
-        radius = 100;
-        transform.localScale = new Vector3(radius,radius,radius);
-    }
-
     void InstantiateEnemy()
     {
         Vector3 spawnPos = Random.onUnitSphere *(radius+30);
-        GameObject spawnEnemy = Instantiate(enemy,spawnPos,Quaternion.identity) as GameObject;
+        GameObject spawnEnemy = Instantiate(enemy,spawnPos,Quaternion.identity,enemyParent) as GameObject;
     }
 
     void InstantiateItem()
@@ -68,12 +75,27 @@ public class Ground : MonoBehaviour
 
 
 
-        GameObject spawnItem_m = Instantiate(key,spawnPos_k,Quaternion.identity) as GameObject;
-        GameObject spawnItem_k = Instantiate(fuel,spawnPos_m,Quaternion.identity) as GameObject;
+        GameObject spawnItem_m = Instantiate(monkey,spawnPos_k,Quaternion.identity,itemParent) as GameObject;
+        GameObject spawnItem_k = Instantiate(fuel,spawnPos_m,Quaternion.identity, itemParent) as GameObject;
+    }
+
+    public void DeleteExistingItem(){
+
+        foreach(Transform item in itemParent){
+            Destroy(item.GetComponent<GameObject>());
+        }
+    
+    }
+
+     public void DeleteExistingEnemy(){
+
+      foreach(Transform enemy in enemyParent){
+          Destroy(enemy.GetComponent<GameObject>());
+      }
     }
 
     public float GetRadius()
     {
-        return radius;
+        return this.transform.localScale.x;
     }
 }

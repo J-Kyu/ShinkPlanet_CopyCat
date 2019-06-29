@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
 	private float moveSpeed = 40;
-	private float rotateSpeed = 60;
+	private float rotateSpeed = 100;
 	private Vector3 moveDirection;
 	private Vector3 rotationDirection;
 	[SerializeField] private State state = null;
+
+	private bool isInvincibleState = true;
 	
 
-
+	void Start(){
+		isInvincibleState = true;
+	}
 	void Update()
 	{
 		moveDirection = new Vector3(0,0,Input.GetAxisRaw("Vertical")).normalized;
@@ -36,6 +40,10 @@ public class PlayerController : MonoBehaviour
 
 	 void OnCollisionEnter(Collision col)
     {
+		if(isInvincibleState ==  true){
+			return ;
+		}
+
         if(col.gameObject.tag == "BlackAsh")
         {
 		  state.ModeToEndGame();
@@ -54,5 +62,16 @@ public class PlayerController : MonoBehaviour
 	{
 		moveSpeed = defaultSpeed;
 		transform.localScale = new Vector3 (defaultScale,defaultScale,defaultScale);	
+		isInvincibleState = true;
+	}
+	public void venerableState(){
+		isInvincibleState = false;
+	}
+
+	public float GetSpeed(){
+		return moveSpeed;
+	}
+	public float GetScale(){
+		return this.transform.localScale.x;
 	}
 }

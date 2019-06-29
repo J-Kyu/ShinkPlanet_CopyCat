@@ -7,11 +7,10 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject blackAsh = null;
     [SerializeField] private GameObject ground = null;
-
+    [SerializeField] private Transform enemyParent = null;
     void Start()
     {
         ground = GameObject.Find("Ground");
-
     }
 
     // Update is called once per frame
@@ -31,7 +30,7 @@ public class Enemy : MonoBehaviour
     IEnumerator wait()
     {
         yield return new WaitForSeconds(2);
-         GameObject afterEffect =   Instantiate(blackAsh,this.transform.position,Quaternion.identity) as GameObject;
+        GameObject afterEffect =   Instantiate(blackAsh,this.transform.position,Quaternion.identity,this.transform.parent) as GameObject;
 
         Vector3 gravityUp = (afterEffect.transform.position - ground.transform.position).normalized;
         Vector3 localUp = afterEffect.transform.up;

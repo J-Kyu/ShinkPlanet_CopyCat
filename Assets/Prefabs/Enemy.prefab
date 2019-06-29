@@ -142,7 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackAsh: {fileID: 2501098331961902423, guid: 17809d788a39dbe45aab7eec649640bb,
     type: 3}
-  ground: {fileID: 8967870900754854540, guid: 3d49cfb5679955d458871d23ccbf7153, type: 3}
+  ground: {fileID: 8788520120942555476, guid: 12123b19eb69c483db0b2116db460e23, type: 3}
+  enemyParent: {fileID: 0}
 --- !u!1001 &753849702898237827
 PrefabInstance:
   m_ObjectHideFlags: 0
