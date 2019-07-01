@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	private Vector3 moveDirection;
 	private Vector3 rotationDirection;
 	[SerializeField] private State state = null;
+	[SerializeField] private Rigidbody rb = null;
 
 	private bool isInvincibleState = true;
 	
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
 				break;
 			}
 			case State.Mode.Ready:{
-				// GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(new Vector3(0,0,1))*10*Time.deltaTime);
+				GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(new Vector3(0,0,1))*10*Time.deltaTime);
 				break;
 			}
 			case State.Mode.Menu:{
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour
 	}
 	public void venerableState(){
 		isInvincibleState = false;
+		rb.velocity = Vector3.zero;
 	}
 
 	public float GetSpeed(){

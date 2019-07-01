@@ -64,7 +64,7 @@ public class Ground : MonoBehaviour
 
     void InstantiateEnemy()
     {
-        Vector3 spawnPos = Random.onUnitSphere *(radius+30);
+        Vector3 spawnPos = Random.onUnitSphere *(radius+60);
         GameObject spawnEnemy = Instantiate(enemy,spawnPos,Quaternion.identity,enemyParent) as GameObject;
     }
 
