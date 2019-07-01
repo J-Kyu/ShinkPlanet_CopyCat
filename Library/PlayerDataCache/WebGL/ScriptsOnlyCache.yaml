@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - BlackAsh
+    - CameraOnPlayer
     - Enemy
     - Fuel
     - GravityAttractor
@@ -84,7 +85,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9986}
     - Class: 114
-      Script: {instanceID: 10520}
+      Script: {instanceID: 10452}
+    - Class: 114
+      Script: {instanceID: 10522}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -572,7 +575,7 @@ ScriptsOnlyBuild:
     className: FakeMovement
   - hash:
       serializedVersion: 2
-      Hash: 290c71c09296ba730b426c3eeb8791c2
+      Hash: f8d89b1111257311d76ef4c882282e90
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: State
@@ -650,7 +653,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 461d62e3c8fb7233ed578a586a6ef89c
+      Hash: d0449ee88aec2a06ff7875c281b9d0a7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Ground
@@ -668,13 +671,13 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 3fe410ac7e29d14fe619d43be6c9e51d
+      Hash: 164790bb6e3b05d9b5be1d87dbc5f2a0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy
   - hash:
       serializedVersion: 2
-      Hash: a88350513d83a3a6d259fe2e5b45cc32
+      Hash: 2a15b1cc1f20ed2be5d7d0e6bab10524
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TextDistance
@@ -770,6 +773,12 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
+      Hash: c53b1e73c9074dc64e5d6f1c2b450ea7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraOnPlayer
+  - hash:
+      serializedVersion: 2
       Hash: d791aa6007fa3640be1164ea75bb087d
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -813,4 +822,4 @@ ScriptsOnlyBuild:
   platform: 20
   scenePathNames:
   - Assets/Scene/main.unity
-  playerPath: C:/Users/User/Documents/ShinkPlanet_CopyCat/Build
+  playerPath: /Users/jeonsang-gyu/Documents/Project/Build/SP_webGL

@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject blackAsh = null;
     [SerializeField] private GameObject ground = null;
-    [SerializeField] private Transform enemyParent = null;
     void Start()
     {
         ground = GameObject.Find("Ground");

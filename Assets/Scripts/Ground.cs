@@ -50,7 +50,7 @@ public class Ground : MonoBehaviour
 
                 break;
             }
-            case State.Mode.Wait:{
+            case State.Mode.Menu:{
                 radius = _radiusOffset;
                 transform.localScale = Vector3.Slerp(transform.localScale,new Vector3 (_radiusOffset,_radiusOffset,_radiusOffset),Time.deltaTime);
 

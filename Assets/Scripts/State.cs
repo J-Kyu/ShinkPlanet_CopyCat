@@ -5,8 +5,8 @@ using UnityEngine;
 //game manager
 public class State : MonoBehaviour
 {
-    public enum Mode {Wait,Playing,Pause,EndGame};
-    public Mode curState = Mode.Wait;
+    public enum Mode {Menu,Ready,Playing,Pause,EndGame};
+    public Mode curState = Mode.Menu;
     
     [SerializeField] private Ground ground = null;
     [SerializeField] private PlayerController playerController = null;
@@ -15,12 +15,12 @@ public class State : MonoBehaviour
     [SerializeField] private CameraOnPlayer cameraOnPlayer =null;
     void Start()
     {
-        curState = Mode.Wait;
+        curState = Mode.Menu;
     }
 
     public void ModeToWait()
     {
-        curState = Mode.Wait;
+        curState = Mode.Menu;
         
         waitGO.SetActive(true);
         endGameGO.SetActive(false);
@@ -29,14 +29,17 @@ public class State : MonoBehaviour
     public void ModeToPlaying()
     {
         playerController.venerableState();
-        waitGO.SetActive(false);
-        cameraOnPlayer.MovingCamera();
         curState = Mode.Playing;
     }
 
     public void ModeToPause()
     {
         curState = Mode.Pause;
+    }
+    public void ModeToReady()
+    {
+        waitGO.SetActive(false);
+        curState = Mode.Ready;
     }
 
     public void ModeToEndGame()
@@ -45,7 +48,7 @@ public class State : MonoBehaviour
         endGameGO.SetActive(true);
         ground.DeleteExistingEnemy();
         ground.DeleteExistingItem();
-        cameraOnPlayer.ResetCameraPosition();
         curState = Mode.EndGame;
     }
+   
 }

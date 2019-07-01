@@ -28,13 +28,20 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if(state.curState == State.Mode.Playing)
-		{
-			GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(moveDirection)*moveSpeed*Time.deltaTime);
-		}
-		else if(state.curState == State.Mode.Wait)
-		{
-			GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(new Vector3(0,0,1))*50*Time.deltaTime);
+		switch(state.curState){
+			case State.Mode.Playing:{
+				// GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(moveDirection)*moveSpeed*Time.deltaTime);
+				GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(new Vector3(0,0,1))*moveSpeed*Time.deltaTime);
+				break;
+			}
+			case State.Mode.Ready:{
+				// GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(new Vector3(0,0,1))*10*Time.deltaTime);
+				break;
+			}
+			case State.Mode.Menu:{
+				GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + transform.TransformDirection(new Vector3(0,0,1))*50*Time.deltaTime);
+				break;
+			}
 		}
 	}
 
