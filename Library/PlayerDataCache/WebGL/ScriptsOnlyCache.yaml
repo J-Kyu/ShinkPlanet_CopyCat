@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BlackAsh
     - CameraOnPlayer
+    - EndGameText
     - Enemy
     - Fuel
     - GravityAttractor
@@ -22,6 +23,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
+    - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
     Assets/Scene/main.unity:
     - Class: 1
@@ -69,6 +71,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9386}
     - Class: 114
+      Script: {instanceID: 9396}
+    - Class: 114
       Script: {instanceID: 9436}
     - Class: 114
       Script: {instanceID: 9646}
@@ -88,6 +92,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10452}
     - Class: 114
       Script: {instanceID: 10522}
+    - Class: 114
+      Script: {instanceID: 40042}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -659,7 +665,7 @@ ScriptsOnlyBuild:
     className: Ground
   - hash:
       serializedVersion: 2
-      Hash: 2673b3bf325e99c8cfeb1d4dac972190
+      Hash: 43ca991c9c9519234532ab792169ea49
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -671,7 +677,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 164790bb6e3b05d9b5be1d87dbc5f2a0
+      Hash: 3fe410ac7e29d14fe619d43be6c9e51d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy
@@ -773,7 +779,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: c53b1e73c9074dc64e5d6f1c2b450ea7
+      Hash: 1adb9fc8cfc7809ba37f0ed4a96662c9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraOnPlayer
@@ -819,6 +825,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: c65bd08a0d7e6e7b3a962e0e1c37ac38
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EndGameText
   platform: 20
   scenePathNames:
   - Assets/Scene/main.unity
